@@ -3,9 +3,14 @@
 > Sometimes I use this in different projects, so I decided to put it on pypi
 
 `xldashboard` is a more beautiful/customizable admin dashboard for Django.
-
+- [Images](#images)
 - [Installation](#installation-%EF%B8%8F)
 - [Settings](#settings-%EF%B8%8F)
+
+## Images
+![](docs/img/1.png)
+![](docs/img/2.png)
+![](docs/img/3.png)
 
 ## Installation 🛠️
 
