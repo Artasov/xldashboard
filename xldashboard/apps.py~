@@ -1,0 +1,20 @@
+from django.apps import AppConfig
+from django.conf import settings
+
+# ваши шаблоны настроек
+from .jazzmin import JAZZMIN_SETTINGS as _JAZZMIN_SETTINGS
+from .jazzmin import JAZZMIN_UI_TWEAKS as _JAZZMIN_UI_TWEAKS
+
+
+class XLDashboardConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'xldashboard'
+
+    def ready(self):
+        # мержим существующие JAZZMIN_SETTINGS (если были) с нашими дефолтами
+        base = getattr(settings, 'JAZZMIN_SETTINGS', {})
+        settings.JAZZMIN_SETTINGS = base | _JAZZMIN_SETTINGS
+
+        # и то же для JAZZMIN_UI_TWEAKS
+        base_ui = getattr(settings, 'JAZZMIN_UI_TWEAKS', {})
+        settings.JAZZMIN_UI_TWEAKS = base_ui | _JAZZMIN_UI_TWEAKS
