@@ -225,75 +225,8 @@
                             </div>
                         </div>
 
-                        <nav class="mt-2">
-                            <ul class="fc nav-sidebar overflow-y-auto no-scrollbar maxh-100vh">
-
-                                <li class="nav-item">
-                                    <a href="{% url 'admin:index' %}" class="nav-link">
-                                        <i class="nav-icon fas fa-th-large"></i>
-                                        <p>{% trans 'Dashboard' %}</p>
-                                    </a>
-                                </li>
-
-
-                                <div class="fc my-2 ">
-                                   {% show_xl_dashboard %}
-                                </div>
-
-
-
-
-
-
-
-
-
-                                {% if jazzmin_settings.navigation_expanded %}
-                                    {% for app in side_menu_list %}
-                                        <li class="nav-header">{{ app.name }}</li>
-                                        {% for model in app.models %}
-                                            <li class="nav-item">
-                                                {% if model.url %}
-                                                    <a href="{{ model.url }}" class="nav-link">
-                                                        <i class="nav-icon {{ model.icon }}"></i>
-                                                        <p>{{ model.name }}</p>
-                                                    </a>
-                                                {% else %}
-                                                    <span class="nav-link disabled">
-                                                <i class="nav-icon {{ model.icon }}"></i> <p>{{ model.name }}</p>
-                                            </span>
-                                                {% endif %}
-                                            </li>
-                                        {% endfor %}
-                                    {% endfor %}
-                                {% else %}
-                                    {% for app in side_menu_list %}
-                                        <li class="nav-item has-treeview">
-                                            <a href="#" class="nav-link">
-                                                <i class="nav-icon {{ app.icon }}"></i>
-                                                <p>{{ app.name|truncatechars:21 }} <i
-                                                        class="fas fa-angle-left right"></i></p>
-                                            </a>
-                                            <ul class="nav nav-treeview" style="display: none;">
-                                                {% for model in app.models %}
-                                                    <li class="nav-item">
-                                                        <a href="
-
-
-
-
-                                                                {% if model.url %}{{ model.url }}{% else %}javascript:void(0){% endif %}"
-                                                           class="nav-link">
-                                                            <i class="nav-icon {{ model.icon }}"></i>
-                                                            <p>{{ model.name }}</p>
-                                                        </a>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </li>
-                                    {% endfor %}
-                                {% endif %}
-                            </ul>
+                        <nav class="mt-2 fc nav-sidebar overflow-y-auto no-scrollbar maxh-100vh">
+                            {% show_xl_dashboard side_menu_list %}
                         </nav>
                     </div>
                 </aside>

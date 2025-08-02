@@ -10,17 +10,63 @@ register = template.Library()
 
 
 @register.inclusion_tag('xl_dashboard/xl_dashboard.html', takes_context=True)
-def show_xl_dashboard(context):
-    """
-    Показывает XL Dashboard.
-    Вызывается в шаблоне как:
+def show_xl_dashboard(context, side_menu_list=None):
+    """Рендерит элементы XL Dashboard.
+
+    По умолчанию строит разделы на основании настроек ``XL_DASHBOARD``.
+    Если передать ``side_menu_list`` (результат ``get_side_menu`` из jazzmin),
+    то для каждой установленной в админке модели будет создан свой элемент в
+    том же стиле, что и для настроек ``XL_DASHBOARD``.
+    Вызывается в шаблоне как::
+
         {% load xl_dashboard_tags %}
-        {% show_xl_dashboard %}
+        {% show_xl_dashboard %}               # из настроек
+        {% show_xl_dashboard side_menu_list %}  # из списка приложений
     """
+    sections: list[tuple[str, list[tuple[str, str]]]] = []
+    actions = {}
+
+    if side_menu_list is not None:
+        # Формируем список секций из доступных приложений и моделей
+
+        # Добавляем ссылку на главную страницу админки
+        sections.append(('Dashboard', [('Dashboard', reverse('admin:index'))]))
+
+        for app in side_menu_list:
+            app_name = getattr(app, 'name', getattr(app, 'app_label', None))
+            if app_name is None and isinstance(app, dict):
+                app_name = app.get('name')
+
+            models = getattr(app, 'models', None)
+            if models is None and isinstance(app, dict):
+                models = app.get('models', [])
+
+            items = []
+            for model in models or []:
+                model_name = getattr(model, 'name', None)
+                if model_name is None and isinstance(model, dict):
+                    model_name = model.get('name')
+
+                model_url = getattr(model, 'url', None)
+                if model_url is None and isinstance(model, dict):
+                    model_url = model.get('url')
+
+                if model_url:
+                    items.append((model_name, model_url))
+                else:
+                    items.append((model_name, '#'))
+
+            sections.append((app_name, items))
+
+        return {
+            'sections': sections,
+            'actions': actions,
+            'request': context['request']
+        }
+
     xl_dashboard = getattr(settings, 'XL_DASHBOARD', {})
     user = context['request'].user  # noqa
 
-    sections = []
     actions = xl_dashboard.get('xl-actions', {})
 
     for section_name, models_map in xl_dashboard.items():
