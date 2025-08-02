@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 from django.conf import settings
 
-from .jazzmin import JAZZMIN_SETTINGS as _JAZZMIN_SETTINGS
-from .jazzmin import JAZZMIN_UI_TWEAKS as _JAZZMIN_UI_TWEAKS
+from .jazzmin_default import JAZZMIN_SETTINGS as _JAZZMIN_SETTINGS
+from .jazzmin_default import JAZZMIN_UI_TWEAKS as _JAZZMIN_UI_TWEAKS
 
 
 class XLDashboardConfig(AppConfig):
