@@ -96,7 +96,7 @@ body {
   --warning: #ffc107;
   --danger: #dc3545;
   --light: #f8f9fa;
-  --dark: #37363d;
+  --dark: #343a40;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -111,10 +111,10 @@ body {
     --dark: #303030;
   }
 }
-.django-ckeditor-widget {
+.django-tinymce-widget {
   filter: invert(0.9) hue-rotate(180deg);
 }
-.django-ckeditor-widget img {
+.django-tinymce-widget img {
   filter: invert(1) hue-rotate(180deg);
 }
 
@@ -162,36 +162,9 @@ body {
 
 .select2-container--default .select2-selection--single {
   padding-top: 10px;
-  background-color: #37363d !important;
-  border: 0 solid #37363d !important;
+  background-color: #343a40 !important;
+  border: 1px solid #8b8b8b !important;
   border-radius: 4px;
-}
-
-.select2-container .select2-selection--single {
-  border: 1px solid rgba(128, 128, 128, 0.3) !important;
-}
-
-.dark-mode .dropdown-menu {
-  background-color: #37363d;
-}
-
-.dark-mode .form-control:not(.form-control-navbar):not(.form-control-sidebar) {
-  background-color: #37363d;
-  border: 1px solid rgba(128, 128, 128, 0.3) !important;
-}
-
-.dark-mode .select2-dropdown {
-  background-color: #37363d;
-  border-width: 0;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6);
-}
-
-.dark-mode .select2-dropdown .select2-search__field {
-  background-color: #37363d;
-}
-
-.dark-mode .select2-results__option[aria-selected=true] {
-  background-color: #57555f !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -225,7 +198,7 @@ body {
 }
 
 .select2-container--default .select2-selection--multiple {
-  background-color: #37363d !important;
+  background-color: #343a40 !important;
   border: 1px solid rgba(161, 161, 161, 0.3) !important;
 }
 
@@ -244,7 +217,7 @@ body {
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: #37363d !important;
+  background-color: #343a40 !important;
   border: 1px solid rgba(161, 161, 161, 0.3) !important;
   padding: 0 0 0 20px !important;
 }
@@ -260,39 +233,39 @@ body {
 
 .vTextField, .vLargeTextField, .vURLField, .vIntegerField, .vBigIntegerField, .vForeignKeyRawIdAdminField, .vDateField, .vTimeField, input[type=number], input[type=text] {
   color: #c6c6c6 !important;
-  background-color: #37363d !important;
-  border: 1px solid rgba(128, 128, 128, 0.3) !important;
+  background-color: #343a40 !important;
+  border: 1px solid #8b8b8b !important;
 }
 
 .calendarbox {
   border: 1px solid rgba(161, 161, 161, 0.3);
-  background: #464555 !important;
+  background: #454d55 !important;
 }
 
 .calendar table {
-  background-color: #37363d !important;
+  background-color: #343a40 !important;
 }
 .calendar th {
   color: #c6c6c6 !important;
   font-weight: bold;
-  background-color: #464555 !important;
+  background-color: #454d55 !important;
   border-bottom: 1px solid rgba(161, 161, 161, 0.3) !important;
 }
 .calendar td.nonday {
-  background-color: #464555 !important;
+  background-color: #454d55 !important;
 }
 .calendar td {
   border-bottom: 1px solid rgba(161, 161, 161, 0.3) !important;
 }
 
 .calendar-shortcuts {
-  background: #464555 !important;
+  background: #454d55 !important;
   border-top: 0 !important;
   border-bottom: 1px solid rgba(161, 161, 161, 0.3) !important;
 }
 
 .calendar-cancel {
-  background: #37363d !important;
+  background: #343a40 !important;
   border-top: 0 !important;
 }
 
@@ -368,7 +341,7 @@ ul.select2-results__options::-webkit-scrollbar {
 }
 
 .main-sidebar .brand-link {
-  background-color: #37363d;
+  background-color: #343a40;
 }
 .main-sidebar .brand-text {
   display: none !important;
@@ -446,22 +419,6 @@ input.action-select {
 .related-widget-wrapper .selector-available select::-webkit-scrollbar, .related-widget-wrapper .selector-chosen select::-webkit-scrollbar {
   width: 0;
   height: 0;
-}
-
-.select2-results__option.select2-results__option--selectable {
-  color: #ccc;
-}
-
-.card {
-  background-color: #37363d !important;
-}
-
-.dark-mode a:not(.btn):hover {
-  color: #fff;
-}
-
-.dark-mode .dropdown-item:focus, .dark-mode .dropdown-item:hover {
-  background-color: #464555;
 }
 
 @media (max-width: 767.98px) {

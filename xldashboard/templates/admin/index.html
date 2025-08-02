@@ -27,6 +27,43 @@
         </div>
     </div>
 
+
+    {% if app_list %}
+        <div class="col-lg-12 col-12" style="margin-top: 2rem">
+            {% for app in app_list %}
+                <div class="module app-{{ app.app_label }}">
+                    <h2 class="mb-2">{{ app.name }}</h2>
+                    <table>
+                        <tbody>
+                        {% for model in app.models %}
+                            <tr>
+                                <th scope="row">
+                                    {% if model.admin_url %}
+                                        <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                                    {% else %}
+                                        {{ model.name }}
+                                    {% endif %}
+                                </th>
+                                {% if model.add_url %}
+                                    <td><a href="{{ model.add_url }}" class="addlink">{% trans 'Add' %}</a></td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                                {% if model.admin_url %}
+                                    <td><a href="{{ model.admin_url }}" class="changelink">{% trans 'Change' %}</a></td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
     <div class="col-lg-3 col-12" style="margin-top: 2rem">
         <div id="content-related">
             <div class="module" id="recent-actions-module">
