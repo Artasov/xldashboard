@@ -42,6 +42,7 @@
 
     <link rel="stylesheet" href="{% static "jazzmin/css/main.css" %}">
     <link rel="stylesheet" href="{% static 'core/css/wide-classes.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/simple-sidebar.css' %}">
     {% if jazzmin_settings.use_google_fonts_cdn %}
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -61,8 +62,9 @@
 
                 {% if jazzmin_settings.show_sidebar %}
                     <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                                class="fas fa-bars"></i></a>
+                        <button class="nav-link btn" id="sidebarToggle" type="button">
+                            <i class="fas fa-bars"></i>
+                        </button>
                     </li>
                 {% else %}
                     <li class="nav-item">
@@ -196,40 +198,38 @@
         {% block sidebar %}
             {% if jazzmin_settings.show_sidebar %}
                 {% get_side_menu as side_menu_list %}
-
-                <aside class="main-sidebar elevation-4 {{ jazzmin_ui.sidebar_classes }}" id="jazzy-sidebar">
-                    <a href="{% url 'admin:index' %}" class="brand-link {{ jazzmin_ui.brand_classes }}" id="jazzy-logo">
-                        <img src="{% static jazzmin_settings.site_logo %}" alt="{{ jazzmin_settings.site_header }} Logo"
-                             class="{{ jazzmin_settings.site_logo_classes }} brand-image elevation-3"
-                             style="opacity: .8">
-                        <span class="brand-text font-weight-light">{{ jazzmin_settings.site_brand }}</span>
-                    </a>
-
-                    <div class="sidebar">
-                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                            <div class="image">
-                                {% if jazzmin_settings|has_jazzmin_setting:"user_avatar" %}
-                                    <img src="{% get_user_avatar request.user %}" width="160px"
-                                         class="img-circle elevation-2" alt="User Image">
-                                {% else %}
-                                    <i class="fas fa-inverse user-profile fa-user-circle"></i>
-                                {% endif %}
+                <div id="sidebar-overlay">
+                    <aside class="" id="jazzy-sidebar">
+                        <!-- Кнопка закрытия sidebar -->
+                        <button class="sidebar-close-btn" id="sidebarCloseBtn" type="button" aria-label="Закрыть меню">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="sidebar">
+                            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                                <div class="image">
+                                    {% if jazzmin_settings|has_jazzmin_setting:"user_avatar" %}
+                                        <img src="{% get_user_avatar request.user %}" width="160px"
+                                             class="img-circle elevation-2" alt="User Image">
+                                    {% else %}
+                                        <i class="fas fa-inverse user-profile fa-user-circle"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="info">
+                                    {% if perms|can_view_self %}
+                                        <a href="{% jazzy_admin_url request.user request.current_app|default:"admin" %}"
+                                           class="d-block">{{ request.user }}</a>
+                                    {% else %}
+                                        <span class="d-block" style="color: white;">{{ request.user }}</span>
+                                    {% endif %}
+                                </div>
                             </div>
-                            <div class="info">
-                                {% if perms|can_view_self %}
-                                    <a href="{% jazzy_admin_url request.user request.current_app|default:"admin" %}"
-                                       class="d-block">{{ request.user }}</a>
-                                {% else %}
-                                    <span class="d-block" style="color: white;">{{ request.user }}</span>
-                                {% endif %}
-                            </div>
+
+                            <nav class="mt-2 fc nav-sidebar overflow-y-auto no-scrollbar maxh-100vh">
+                                {% show_xl_dashboard side_menu_list %}
+                            </nav>
                         </div>
-
-                        <nav class="mt-2 fc nav-sidebar overflow-y-auto no-scrollbar maxh-100vh">
-                            {% show_xl_dashboard side_menu_list %}
-                        </nav>
-                    </div>
-                </aside>
+                    </aside>
+                </div>
             {% endif %}
         {% endblock %}
     {% endif %}
@@ -334,6 +334,7 @@
     </div>
 {% endif %}
 
+<script src="{% static 'admin/js/simple-sidebar.js' %}"></script>
 <!-- jQuery -->
 <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
 <!-- Bootstrap 4 -->
