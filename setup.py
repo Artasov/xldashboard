@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="xldashboard",
-    version="0.1.2",
+    version="0.1.4",
     author="xlartas",
     author_email="ivanhvalevskey@gmail.com",
     description="More beautiful/customizable admin dashboard for Django",
@@ -16,7 +16,6 @@ setuptools.setup(
     include_package_data=True,
     install_requires=[
         "Django>=4.0,<5.3",
-        "django-jazzmin>=3.0.1",
         "django-jazzmin>=3.0.1",
         "pyperclip>=1.8.0",
         "aiohttp>=3.8.0",
@@ -41,7 +40,7 @@ setuptools.setup(
         "Topic :: Software Development :: Libraries :: Application Frameworks",
     ],
     python_requires='>=3.8',
-    keywords='dashboard django jazzmin xldashboard  utils admin beautiful funcs features',
+    keywords='dashboard django app apps jazzmin xldashboard utils admin beautiful funcs features',
     project_urls={
         'Source': 'https://github.com/Artasov/xldashboard ',
         'Tracker': 'https://github.com/Artasov/xldashboard /issues',

@@ -12,6 +12,10 @@ body {
   border-radius: 7px;
 }
 
+#jazzy-navbar {
+  margin-left: 0 !important;
+}
+
 input[type=checkbox] {
   transform: scale(1.5);
 }
@@ -145,6 +149,10 @@ input[type=checkbox] {
 }
 .django-tinymce-widget img {
   filter: invert(1) hue-rotate(180deg);
+}
+
+.content-wrapper {
+  margin-left: 0 !important;
 }
 
 .content-wrapper > .content {
