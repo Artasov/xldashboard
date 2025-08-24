@@ -25,8 +25,12 @@ def show_xl_dashboard(context, side_menu_list=None):
     """
     sections: list[tuple[str, list[tuple[str, str]]]] = []
     actions = {}
+    xl_dashboard = getattr(settings, 'XL_DASHBOARD', {})
 
-    if side_menu_list is not None:
+    # Проверяем, есть ли в XL_DASHBOARD какие-либо секции кроме "xl-actions"
+    dashboard_sections_exist = any(key != 'xl-actions' for key in xl_dashboard)
+
+    if side_menu_list is not None and not dashboard_sections_exist:
         # Формируем список секций из доступных приложений и моделей
 
         # Добавляем ссылку на главную страницу админки
@@ -64,7 +68,6 @@ def show_xl_dashboard(context, side_menu_list=None):
             'request': context['request']
         }
 
-    xl_dashboard = getattr(settings, 'XL_DASHBOARD', {})
     user = context['request'].user  # noqa
 
     actions = xl_dashboard.get('xl-actions', {})
