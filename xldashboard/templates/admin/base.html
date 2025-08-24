@@ -197,7 +197,6 @@
         </nav>
         {% block sidebar %}
             {% if jazzmin_settings.show_sidebar %}
-                {% get_side_menu as side_menu_list %}
                 <!-- DEBUG: Sidebar is enabled -->
                 <div id="sidebar-overlay">
                     <aside class="" id="jazzy-sidebar">
@@ -227,7 +226,7 @@
                             </div>
 
                             <nav class="mt-2 fc nav-sidebar overflow-y-auto no-scrollbar maxh-100vh">
-                                {% show_xl_dashboard side_menu_list %}
+                                {% show_xl_dashboard %}
                             </nav>
                         </div>
                     </aside>

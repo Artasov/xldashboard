@@ -81,3 +81,20 @@ def test_show_xl_dashboard_preserves_multiple_section_order():
     assert [sec[0] for sec in result['sections']] == ['General', 'Events']
     assert [name for name, _ in result['sections'][0][1]] == ['Users', 'Social links']
     assert [name for name, _ in result['sections'][1][1]] == ['Profiles', 'Events']
+
+
+def test_show_xl_dashboard_uses_custom_names_for_model_paths():
+    rf = RequestFactory()
+    request = rf.get('/')
+    request.user = _dummy_user()
+
+    dashboard = {
+        'General': {
+            'Account users': 'app.User',
+        }
+    }
+
+    with override_settings(XL_DASHBOARD=dashboard):
+        result = show_xl_dashboard({'request': request}, [])
+
+    assert result['sections'][0][1][0][0] == 'Account users'
