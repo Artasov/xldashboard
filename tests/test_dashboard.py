@@ -57,3 +57,27 @@ def test_show_xl_dashboard_uses_settings_order_and_names():
         'Demo keys',
         'Host keys',
     ]
+
+
+def test_show_xl_dashboard_preserves_multiple_section_order():
+    rf = RequestFactory()
+    request = rf.get('/')
+    request.user = _dummy_user()
+
+    dashboard = {
+        'General': {
+            'Users': '/users/',
+            'Social links': '/social-links/',
+        },
+        'Events': {
+            'Profiles': '/profiles/',
+            'Events': '/events/',
+        },
+    }
+
+    with override_settings(XL_DASHBOARD=dashboard):
+        result = show_xl_dashboard({'request': request}, [])
+
+    assert [sec[0] for sec in result['sections']] == ['General', 'Events']
+    assert [name for name, _ in result['sections'][0][1]] == ['Users', 'Social links']
+    assert [name for name, _ in result['sections'][1][1]] == ['Profiles', 'Events']
