@@ -32,8 +32,12 @@ INSTALLED_APPS = [
 
 # xl-dashboard
 XL_DASHBOARD = {
+    '--------': {
+        'Dashboard': '/admin'
+    },
     'General': {
-        'Users': 'app.User',
+        'Users SS': 'app.User',
+        'Groups AA': 'auth.Group',
     },
     # 'xl-actions': { # TODO: not working now
     #     'Collect Static': 'run_collectstatic',

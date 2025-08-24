@@ -19,7 +19,7 @@ if imported:
         """
         Ищет функцию (или корутину) в XL_DASHBOARD['xl-actions'] и вызывает её.
         """
-        print(f"action_view called with action_name={action_name}")  # Лог
+        print(f'action_view called with action_name={action_name}')  # Лог
         user = request.user
         if not (user and user.is_staff):
             return HttpResponseForbidden('Access denied')
