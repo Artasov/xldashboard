@@ -19,6 +19,30 @@ pip install xldashboard
 ```
 
 ## Settings ⚙️
+
+
+### In `settings.py`
+
+```python
+# settings.py
+from xldashboard.jazzmin_default import JAZZMIN_SETTINGS, JAZZMIN_UI_TWEAKS
+
+INSTALLED_APPS = [
+    # ...
+    'xldashboard',
+]
+
+# xl-dashboard
+XL_DASHBOARD = {
+    'General': {
+        'Users': 'app.User',
+    },
+    'And some tab again': {
+        'Product': 'shop_app.ProductModel',
+    },
+    ...
+}
+```
 ### Customize jazzmin.py (or just copy it)
 ```python
 # jazzmin.py
@@ -129,36 +153,5 @@ JAZZMIN_UI_TWEAKS = {
     "footer_fixed": False,  # Disconnection of a fixed footer
     "navbar_fixed": True,  # Fixed navigation panel
     "actions_sticky_top": True,  # Fixation of actions in the upper part of the page
-}
-```
-
-### In `settings.py`
-
-```python
-# settings.py
-from .jazzmin import JAZZMIN_SETTINGS as _JAZZMIN_SETTINGS
-
-INSTALLED_APPS = [
-    # ...
-    'xldashboard',
-]
-
-# xl-dashboard
-XL_DASHBOARD = {
-    'General': {
-        'Users': 'app.User',
-    },
-    'And some tab again': {
-        'Product': 'shop_app.ProductModel',
-    },
-    ...
-}
-
-# Jazzmin
-JAZZMIN_SETTINGS = _JAZZMIN_SETTINGS | {
-    'usermenu_links': [
-        {'name': 'Site', 'url': f'https://...', 'new_window': True},
-        {'name': 'Logs', 'url': f'https://...', 'new_window': True},
-    ],
 }
 ```
