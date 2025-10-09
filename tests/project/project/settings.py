@@ -32,11 +32,21 @@ INSTALLED_APPS = [
 
 # xl-dashboard
 XL_DASHBOARD = {
-    '--------': {
-        'Dashboard': '/admin'
+    'Dashboard': {
+        '__name__': '',
+        '__background__': '#ff55ee33',
+        'Dashboard': {
+            'name': 'Dashboard',
+            'model': '/admin',
+            'background': '#ff55ee',
+        }
     },
     'General': {
-        'Users SS': 'app.User',
+        'Users SS': {
+            'name': 'Users',
+            'model': 'app.User',
+            'background': '#ffee55',
+        },
         'Groups AA': 'auth.Group',
     },
     # 'xl-actions': { # TODO: not working now
