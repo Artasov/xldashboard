@@ -8,6 +8,7 @@
 - [Settings](#settings-%EF%B8%8F)
 
 ## Images
+
 ![](docs/img/1.png)
 ![](docs/img/2.png)
 ![](docs/img/3.png)
@@ -40,11 +41,24 @@ XL_DASHBOARD = {
     'And some tab again': {
         'Product': 'shop_app.ProductModel',
     },
+    # Расширенный формат:
+    'users_section': {
+        '__name__': 'Пользователи',
+        '__background__': '#ffee55',
+        'Users': 'app.User',
+        'Profiles': {
+            'name': 'Профили',
+            'background': '#fe4',
+            'icon': '/static/images/profiles.png',
+            'model': 'crm.Profile',
+        },
+    },
     ...
 }
 ```
 
 ### In `urls.py`
+
 ```python
 # urls.py
 from django.urls import path, include
@@ -56,6 +70,7 @@ urlpatterns = [
 ```
 
 ### Customize jazzmin.py (or just copy it)
+
 ```python
 # jazzmin.py
 
