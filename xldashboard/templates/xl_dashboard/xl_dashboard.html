@@ -9,11 +9,11 @@
                 <h5 class="mb-1 pb-1" style="opacity: 92%; white-space: break-spaces;">{{ section_name }}</h5>
                 <ul class="fr flex-wrap" style="gap: .4rem">
                     {% for item_name, link in items %}
-                        <li class="hover-scale-3">
+                        <a class="hover-scale-3" href="{{ link }}">
                             <h5 class="mb-0 bg-white-10 py-1 px-2" style="width: fit-content; border-radius: .3rem;">
-                                <a style="white-space: normal" href="{{ link }}">{{ item_name }}</a>
+                                <span style="white-space: normal">{{ item_name }}</span>
                             </h5>
-                        </li>
+                        </a>
                     {% endfor %}
                 </ul>
             </section>
