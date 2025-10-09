@@ -43,6 +43,18 @@ XL_DASHBOARD = {
     ...
 }
 ```
+
+### In `urls.py`
+```python
+# urls.py
+from django.urls import path, include
+
+urlpatterns = [
+    # ...
+    path('api/v1/', include('xldashboard.routes.api')),
+]
+```
+
 ### Customize jazzmin.py (or just copy it)
 ```python
 # jazzmin.py
