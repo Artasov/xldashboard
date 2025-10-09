@@ -280,6 +280,14 @@ input[type=checkbox] {
   border: 1px solid #8b8b8b !important;
 }
 
+.select2-results__option.select2-results__option--selectable {
+  color: #c6c6c6 !important;
+}
+
+.main-footer {
+  margin-left: 0 !important;
+}
+
 .calendarbox {
   border: 1px solid rgba(161, 161, 161, 0.3);
   background: #454655 !important;
