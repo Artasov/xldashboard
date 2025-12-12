@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setuptools.setup(
     name='xldashboard',
-    version='0.1.9',
+    version='0.2.0',
     author='xlartas',
     author_email='ivanhvalevskey@gmail.com',
     description='More beautiful/customizable admin dashboard for Django',
@@ -15,7 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=[
-        'Django>=4.0,<5.3',
+        'Django>=4.0',
         'django-jazzmin>=3.0.1',
         'pyperclip>=1.8.0',
         'aiohttp>=3.8.0',
@@ -29,11 +29,14 @@ setuptools.setup(
         'Framework :: Django :: 5',
         'Framework :: Django :: 5.1',
         'Framework :: Django :: 5.2',
+        'Framework :: Django :: 6.0',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14',
         'Operating System :: OS Independent',
         'License :: OSI Approved :: MIT License',
         'Intended Audience :: Developers',
